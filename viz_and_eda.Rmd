@@ -102,13 +102,64 @@ weather_df %>%
 ```
 
 ## some extra stuff
+```{r}
+weather_df %>%
+  ggplot(aes(x = date, y = tmax, color = name)) +
+  geom_smooth(size = 2, se = FALSE)
+```
 
 
+2d density
+```{r}
+weather_df %>%
+  ggplot(aes(x = tmin, y = tmax)) +
+  geom_bin2d()
+```
+
+# install hexbin
+weather_df %>%
+  ggplot(aes(x = tmin, y = tmax)) +
+  geom_hex()
 
 
+## more kinds of plots
+```{r}
+weather_df %>%
+  ggplot(aes(x = tmax, fill = name)) +
+  geom_histogram() +
+  facet_grid(~name)
+```
+
+density plot!
+```{r}
+weather_df %>%
+  ggplot(aes(x = tmax, fill = name)) +
+  geom_density(alpha = .3) 
+```
 
 
+## box plots
+```{r}
+weather_df %>%
+  ggplot(aes(x = name, y = tmax)) +
+  geom_boxplot()
+```
 
+## violin plot
+```{r}
+weather_df %>%
+  ggplot(aes(x = name, y = tmax)) +
+  geom_violin()
+```
+
+
+## ridge plots
+**compare between groups**
+```{r}
+weather_df %>%
+  ggplot(aes(x = tmax, y = name)) +
+  geom_density_ridges()
+```
 
 
 
